@@ -15,11 +15,13 @@ class CreatePoductsAttributesTable extends Migration
     {
         Schema::create('poducts_attributes', function (Blueprint $table) {
             $table->integer('p_id');
-            $table->string('p_code');
-            $table->string('p_size');
+            $table->string('p_size_1');
+            $table->string('p_size_2');
+            $table->string('p_size_3');
             $table->string('p_stock');
-            $table->string('p_color');
-            $table->integer('p_price');
+            $table->string('p_color_1');
+            $table->string('p_color_2');
+            $table->string('p_color_3');
             $table->timestamps();
         });
     }

@@ -15,10 +15,8 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/shop', function () {
-    return view('shop');
-})->name('shop');
-
+Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/shop/{slug}','ShopController@show');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
