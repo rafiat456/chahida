@@ -21,7 +21,7 @@
 		<aside class="col-sm-5">
 <article class="gallery-wrap"> 
 <div class="img-big-wrap">
-  <div> <a href="#"><img src="{{asset('images/7.jpg')}}"></a></div>
+  <div> <a href="#"><img src="{{asset('images/3.jpg')}}"></a></div>
 </div> <!-- slider-product.// -->
 <div class="img-small-wrap">
   <div class="item-gallery"> <img src="{{asset('images/1.jpg')}}"> </div>
@@ -33,13 +33,15 @@
 		</aside>
 		<aside class="col-sm-7">
 <article class="card-body p-5 full-height">
-	<h3 class="title mb-3">Original Version of Some product name</h3>
+	<h3 class="title mb-3">{{$product->p_name}}</h3>
 
 <p class="price-detail-wrap"> 
 	<span class="price h3 text-warning"> 
-		<span class="currency">US $</span><span class="num">1299</span>
+		
+		<span class="currency">TK </span><span class="num">{{$product->p_price}}</span>
+	
 	</span> 
-	<span>/per kg</span> 
+	<!--<span>/per kg</span> -->
 </p> <!-- price-detail-wrap .// -->
 <dl class="item-property">
   <dt>Description</dt>
@@ -48,17 +50,22 @@ tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco </p></dd>
 </dl>
 <dl class="param param-feature">
-  <dt>Model#</dt>
-  <dd>12345611</dd>
+  <dt>Model</dt>
+  <dd>{{$item->p_slug}}</dd>
 </dl>  <!-- item-property-hor .// -->
 <dl class="param param-feature">
   <dt>Availability</dt>
+  @if($item->p_stock == 1)
   <dd><i style="padding-left: 0;" class="fa fa-check-circle text-success"></i>In Stock</dd>
+  @else
   <dd><i style="padding-left: 0;" class="fa fa-times-circle text-danger"></i>Out of stock</dd>
+  @endif
 </dl>  <!-- item-property-hor .// -->
 <dl class="param param-feature">
-  <dt>Delivery</dt>
-  <dd>Russia, USA, and Europe</dd>
+  <dt>Delivery Time</dt>
+  
+  <dd>{{$product->p_delivery_time}}</dd>
+
 </dl>  <!-- item-property-hor .// -->
 
 <hr>
@@ -88,9 +95,9 @@ quis nostrud exercitation ullamco </p></dd>
 			  <dt>Color: </dt>
 			  <dd>
 			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> Black </option>
-			  		<option> White </option>
-			  		<option> Red </option>
+			  		<option> {{$item->p_color_1}} </option>
+			  		<option> {{$item->p_color_2}} </option>
+			  		<option> {{$item->p_color_3}} </option>
 			  	</select>
 			  </dd>
 			</dl>  <!-- item-property .// -->
@@ -100,10 +107,9 @@ quis nostrud exercitation ullamco </p></dd>
 			  <dt>Size: </dt>
 			  <dd>
 			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> small </option>
-			  		<option> medium </option>
-			  		<option> large </option>
-			  		<option> xxl </option>
+			  		<option> {{$item->p_size_1}} </option>
+			  		<option> {{$item->p_size_2}} </option>
+			  		<option> {{$item->p_size_3}} </option>
 			  	</select>
 			  </dd>
 			</dl>  <!-- item-property .// -->

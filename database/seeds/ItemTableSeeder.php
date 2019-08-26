@@ -13,7 +13,7 @@ class ItemTableSeeder extends Seeder
     {
         Poducts_attribute::create([
 
-        	'p_id' => '1',
+        	'p_slug' =>  'hp-model-9999',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -26,7 +26,7 @@ class ItemTableSeeder extends Seeder
 
      	Poducts_attribute::create([
 
-        	'p_id' => '2',
+        	'p_slug' =>  'hp-model-2873',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -39,7 +39,7 @@ class ItemTableSeeder extends Seeder
 
       	Poducts_attribute::create([
 
-        	'p_id' => '3',
+        	'p_slug' =>  'dell-lapotop',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -52,7 +52,7 @@ class ItemTableSeeder extends Seeder
 
        	Poducts_attribute::create([
 
-        	'p_id' => '4',
+        	'p_slug' =>  'lenevo',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -65,7 +65,7 @@ class ItemTableSeeder extends Seeder
 
         Poducts_attribute::create([
 
-        	'p_id' => '5',
+        	'p_slug' =>  'sonyvaio',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -78,7 +78,7 @@ class ItemTableSeeder extends Seeder
 
      	Poducts_attribute::create([
 
-        	'p_id' => '6',
+        	'p_slug' =>  'toshiba',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -91,7 +91,7 @@ class ItemTableSeeder extends Seeder
 
       	Poducts_attribute::create([
 
-        	'p_id' => '7',
+        	'p_slug' =>  'hp-model-99994',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -105,7 +105,7 @@ class ItemTableSeeder extends Seeder
 
        	Poducts_attribute::create([
 
-        	'p_id' => '8',
+        	'p_slug' =>  'hp-model-28736',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -118,7 +118,7 @@ class ItemTableSeeder extends Seeder
         
         Poducts_attribute::create([
 
-        	'p_id' => '9',
+        	'p_slug' =>  'dell-model-49348',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -131,7 +131,7 @@ class ItemTableSeeder extends Seeder
      	
      	Poducts_attribute::create([
 
-        	'p_id' => '10',
+        	'p_slug' =>  'lenevo-mdoel-8347',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
@@ -145,7 +145,7 @@ class ItemTableSeeder extends Seeder
 
       	Poducts_attribute::create([
 
-	    	'p_id' => '11',
+	    	'p_slug' =>  'sonyvaio-model-9832',
 	    	'p_size_1' => 'small',
 	    	'p_size_2' => 'medium',
 	    	'p_size_3' => 'large',
@@ -159,7 +159,7 @@ class ItemTableSeeder extends Seeder
 
    		Poducts_attribute::create([
 
-        	'p_id' => '12',
+        	'p_slug' =>  'tohiba-model-2',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',

@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'IndexController@index')->name('home');
 
 Route::get('/shop', 'ShopController@index')->name('shop');
 Route::get('/shop/{slug}','ShopController@show');
@@ -35,9 +33,7 @@ Route::get('/cart', function () {
     return view('cart');
 })->name('cart');
 
-Route::get('/item', function () {
-    return view('item');
-})->name('item');
+
 
 Route::get('/checkout', function () {
     return view('checkout');
