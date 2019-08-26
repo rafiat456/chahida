@@ -25,8 +25,8 @@
 		                          <form id="registerForm" method="POST" action="{{route('resister_store')}}" novalidate="novalidate">
 		                          	<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 		                              <div class="form-group">
-		                                  <label for="username" class="control-label required-star">Username</label>
-		                                  <input type="text" class="form-control required" id="username" name="username" value="" required placeholder="">
+		                                  <label for="u_name" class="control-label required-star">Username</label>
+		                                  <input type="text" class="form-control required" id="username" name="u_name" value="" required placeholder="">
 		                                  
 		                              </div>
 		                              <div class="form-group">
