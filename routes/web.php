@@ -23,9 +23,11 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+
+/*user register*/
+
+Route::get('/register','UsersController@registrationForm')->name('register');
+Route::post('/register','UsersController@store')->name('resister_store');
 
 Route::get('/login', function () {
     return view('login');
