@@ -169,7 +169,7 @@
 	      			<br>
 	      			<div class="thumb-content">
 									<h4><a href="/shop/{{$product->p_slug}}">{{$product->p_name}}</a></h4>
-									<p class="item-price"><strike>600</strike> <span>{{$product->p_price}}</span></p>
+									<p class="item-price"><strike>600</strike> <span>{{$product->p_price}}</span> TK</p>
 									<div class="star-rating">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i class="fa fa-star"></i></li>

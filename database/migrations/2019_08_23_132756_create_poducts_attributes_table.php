@@ -14,7 +14,8 @@ class CreatePoductsAttributesTable extends Migration
     public function up()
     {
         Schema::create('poducts_attributes', function (Blueprint $table) {
-            $table->integer('p_id');
+            $table->increments('id');
+            $table->string('p_slug');
             $table->string('p_size_1');
             $table->string('p_size_2');
             $table->string('p_size_3');

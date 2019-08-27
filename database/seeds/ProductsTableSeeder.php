@@ -145,7 +145,7 @@ class ProductsTableSeeder extends Seeder
         Products::create([
 
         	'cat_id' => '1',
-        	'p_name' => 'Sony Vaio model-9832',
+        	'p_name' => 'Sony model-9832',
         	'p_slug' =>  'sonyvaio-model-9832',
         	'p_description' => 'Buy the best one',
         	'p_code' => '70011',

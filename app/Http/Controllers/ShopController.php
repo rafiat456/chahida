@@ -14,7 +14,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Products::InRandomOrder()->get();
+        $products = Products::InRandomOrder()->take(12)->get();
         return view('shop')->with('products', $products);
     }
 
@@ -48,9 +48,10 @@ class ShopController extends Controller
     public function show($slug)
     {
 
-        $item = Products::where('p_slug', $slug)->firstOrFail();
-        dd($item);
-        return view('item');
+        $item = Poducts_attribute::where('p_slug', $slug)->firstOrFail();
+        $product = Products::where('p_slug', $slug)->firstOrFail();
+
+        return view('item',['product' => $product])->with('item', $item);
     }
 
     /**
@@ -61,7 +62,7 @@ class ShopController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

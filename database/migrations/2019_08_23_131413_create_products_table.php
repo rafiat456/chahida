@@ -19,11 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('p_name')->unique();
             $table->string('p_slug')->unique();
             $table->string('p_description')->nullable();
+            $table->string('Specification')->nullable();
             $table->string('p_code')->unique();
             $table->integer('p_price');
             $table->string('p_delivery_time');
             $table->integer('p_delivery_charge');
-
             $table->timestamps();
         });
     }

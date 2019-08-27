@@ -120,7 +120,7 @@
 			      </div>   
 			    </div>
 			    <div class="carousel-item">
-			      <img src="{{asset('images/slide-4.jpeg')}}" alt="New York" class="img_size">
+			      <img src="{{asset('images/slide-1.jpg')}}" alt="New York" class="img_size">
 			      <div class="carousel-caption">
 			        <a href="#" class="btn btn-danger btn-lg">Discover</a>
 			      </div>   
@@ -562,7 +562,7 @@
 						
 					</div>
 					<div class="card-body">
-						<img src="{{asset('images/10.jpg')}}" class="card-img" alt="">
+						<img src="{{asset('images/8.jpg')}}" class="card-img" alt="">
 					</div>
 					<div class="card-footer  text-center">
 						<a href="#" class="btn btn-info">Details</a>
@@ -577,7 +577,7 @@
 						
 					</div>
 					<div class="card-body">
-						<img src="{{asset('images/6.jpg')}}" class="card-img" alt="">
+						<img src="{{asset('images/9.jpg')}}" class="card-img" alt="">
 					</div>
 					<div class="card-footer text-center">
 						<a href="#" class="btn btn-info ">Details</a>
@@ -606,15 +606,16 @@
 
 		<div class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
 			<div class="row">
-			  <div class="col-md-3 col-sm-6 col-xs-auto">
+	@foreach($all_products as $product)
+			  <div class="col-md-3  col-sm-6 col-xs-6">
 			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
+			      	<a href="/shop/{{$product->p_slug}}"><img src="{{asset('images/3.jpg')}}" alt="" class="img_size"></a>
 		     	</div>
 	      		<div class="caption text-center">
 	      			<br>
 	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
+									<h4><a href="/shop/{{$product->p_slug}}">{{$product->p_name}}</a></h4>
+									<p class="item-price"><strike>600</strike> <span>{{$product->p_price}}</span></p>
 									<div class="star-rating">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i class="fa fa-star"></i></li>
@@ -625,350 +626,15 @@
 										</ul>
 									</div>
 									<a href="#" class="btn btn-info">Add to Cart</a>
+									<br><br><br>
 								</div>
 	    		</div>
 			  </div>
-			  <div class="col-md-3 col-sm-6 col-xs-auto">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			 <div class="col-md-3 col-sm-6  col-xs-auto">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			   <div class="col-md-3 col-sm-6  col-xs-auto">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
+				
+			  @endforeach
 			</div>
 			<br>
-			<div class="row">
-			  <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			  <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			 <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			   <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			</div>
-			<br>
-			<div class="row">
-			  <div class="col-md-3 col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			  <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			 <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			    <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			</div>
-			<br>
-			<div class="row">
-			  <div class="col-md-3 col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			  <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption  text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			 <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption  text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			  <div class="col-md-3  col-sm-6 col-xs-6">
-			    <div class="img-thumbnail">
-			      	<img src="{{asset('images/3.jpg')}}" alt="" class="img_size">
-		     	</div>
-	      		<div class="caption text-center">
-	      			<br>
-	      			<div class="thumb-content">
-									<h4>Macbook Air</h4>
-									<p class="item-price"><strike>$899.00</strike> <span>$649.00</span></p>
-									<div class="star-rating">
-										<ul class="list-inline">
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-										</ul>
-									</div>
-									<a href="#" class="btn btn-info">Add to Cart</a>
-								</div>
-	    		</div>
-			  </div>
-			</div>
-			<br>
+			
 			<div class="row mt-4 ">
 				<div class="col-md-12 col-sm-12">
 				  <a href="{{route('shop')}}" class="btn btn-lg btn-block btn-dark">View more</a>
