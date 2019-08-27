@@ -159,7 +159,7 @@ class ItemTableSeeder extends Seeder
 
    		Poducts_attribute::create([
 
-        	'p_slug' =>  'tohiba-model-2',
+        	'p_slug' =>  'toshiba-model-2',
         	'p_size_1' => 'small',
         	'p_size_2' => 'medium',
         	'p_size_3' => 'large',
