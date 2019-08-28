@@ -1,6 +1,6 @@
 
-<h1><strong><span style="font-size:30px; color:gray">C</span>hahida</i></strong></h1>
-<i>An Online Shopping Store</i>
+<h1>Chahida</h1>
+<i><span style="color:red;">An Online Shopping Store</span></i>
 
 
 
