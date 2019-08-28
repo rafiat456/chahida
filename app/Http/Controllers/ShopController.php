@@ -51,7 +51,14 @@ class ShopController extends Controller
         $item = Poducts_attribute::where('p_slug', $slug)->firstOrFail();
         $product = Products::where('p_slug', $slug)->firstOrFail();
 
-        return view('item',['product' => $product])->with('item', $item);
+        $youmaylike = Products::where('p_slug','!=', $slug)->InRandomOrder()->take(4)->get();
+
+        return view('item')->with([
+            'product' => $product,
+            'youmaylike' => $youmaylike,
+            'item' => $item,
+
+        ]);
     }
 
     /**
