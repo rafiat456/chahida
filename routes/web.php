@@ -20,25 +20,41 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
+
+Route::group(['middleware' => ['auth']], function() {
+  
+
+});
+
+Route::group(['middleware' => 'auth'], function () {
+
+      Route::get('/checkout', function () {
+        dd('12');
+    return view('checkout');
+})->name('checkout');
+    
+});
+
 /*user register*/
 
 Route::get('/register','UsersController@registrationForm')->name('register');
+Route::get('/register/verification/{token}','UsersController@verification')->name('register_verify');
 Route::post('/register','UsersController@store')->name('resister_store');
 
+/*login */
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::post('/login','UsersController@checklogin')->name('login_action');
+
 Route::get('/cart', function () {
     return view('cart');
-})->name('cart');
+})->name('cart')->middleware('auth');
 
 
 
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
-
+Route::get('/logout', 'UsersController@logout');
 Route::get('/order', function () {
     return view('order');
 })->name('order');

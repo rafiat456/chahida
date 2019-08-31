@@ -7,6 +7,9 @@
 	<div class="jumbotron text-center" style="margin-bottom:0">
 	  <h1>Chahida</h1>
 	  <p>An Online Shopping Store</p> 
+	  @if(Auth::check())
+	  <span>{{Auth::user()->u_name}}</span>
+	  @endif
 	</div>
 
 	@include('inc/navbar')
