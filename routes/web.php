@@ -14,7 +14,8 @@
 Route::get('/', 'IndexController@index')->name('home');
 
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::get('/shop/{slug}','ShopController@show');
+Route::get('/shop/{slug}','ShopController@show')->name('shop.show');
+Route::post('/shop/price-searching','SearchController@Price')->name('searchprice');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -29,15 +30,13 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::get('/cart', function () {
-    return view('cart');
-})->name('cart');
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::post('/cart','CartController@store')->name('cart.store');
+Route::get('/cart/empty','CartController@empty')->name('cart.empty');
+Route::delete('/cart/{id}','CartController@destroy')->name('cart.destroy');
 
 
-
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
+Route::get('/checkout','CartController@checkout')->name('checkout');
 
 Route::get('/order', function () {
     return view('order');

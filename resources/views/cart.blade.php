@@ -16,8 +16,31 @@
 
 <div class="cart_area clearfix">
             <div class="container">
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{session()->get('success')}}
+                    </div>
+                @endif
+
+                @if(count($errors) > 0)
+                    <div class="alert aler-danger">
+                        <ul>
+                            @foreach($errors->all as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+
+                @if(Cart::count() > 0)
+
+                    <h3>{{Cart::count()}} item(s) were added</h3>
+                    <br>
                 <div class="row">
                     <div class="col-12">
+                        
                         <div class="cart-table clearfix">
                             <table class="table table-responsive">
                                 <thead>
@@ -28,17 +51,19 @@
                                         <th>Price</th>
                                         <th>Quantity</th>
                                         <th>Total</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
+                                @foreach(Cart::content() as $item)
                                 <tbody>
                                     <tr>
                                         <td class="cart_product_img d-flex align-items-center">
-                                            <a href="#"><img src="{{asset('images/8.jpg')}}" alt="Product"></a>
-                                            <h6>Yellow Cocktail Dress</h6>
+                                            <a href="{{route('shop.show', $item->model->p_slug)}}"><img src="{{asset('images/3.jpg')}}" alt="Product"></a>
+                                            <h6>{{$item->model->p_name}}</h6>
                                         </td>
                                         <td class="price"><span>Red</span></td>
                                         <td class="price"><span>Small</span></td>
-                                        <td class="price"><span>$49.88</span></td>
+                                        <td class="price"><span>{{$item->model->p_price}}</span></td>
                                         <td class="qty">
                                             <div class="quantity">
                                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
@@ -47,23 +72,37 @@
                                             </div>
                                         </td>
                                         <td class="total_price"><span>50TK</span></td>
+                                        <td>
+                                            <form action="{{route('cart.destroy', $item->rowId)}}" method="post">
+                                            @csrf
+                                            {{method_field('DELETE')}}
+                                            <button><i class="fa fa-remove"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </tbody>
+
+                                @endforeach
                             </table>
                         </div>
+                        
 
                         <div class="cart-footer d-flex mt-30">
                             <div class="back-to-shop w-50">
                                 <a href="{{route('shop')}}">Continue shooping</a>
                             </div>
                             <div class="update-checkout w-50 text-right">
-                                <a href="#">clear cart</a>
+                                <a href="{{route('cart.empty')}}">clear cart</a>
                                 <a href="#">Update cart</a>
                             </div>
                         </div>
 
                     </div>
                 </div>
+                @else
+
+                            <h3>No item was added</h3>
+                @endif
 
                 <div class="row">
                     <div class="col-12 col-md-6 col-lg-4">

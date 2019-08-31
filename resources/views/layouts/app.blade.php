@@ -1,14 +1,30 @@
+<style>
 
+</style>
 	@include('inc/header')
 
 <body>
 
 <div class="container-fluid">
-	<div class="jumbotron text-center" style="margin-bottom:0">
-	  <h1>Chahida</h1>
-	  <p>An Online Shopping Store</p> 
-	</div>
+	<div class="header-back">
+		<div class="triangle-left float-left">
+			<div class="jumbotron text-white text-center" style="margin-bottom:0">
+				
+			  <h1>50% off</h1>
+			  <p>For Eid special</p> 
 
+			</div>
+		</div>
+		
+		<div class="triangle-right float-right">
+			<div class="jumbotron text-center" style="margin-bottom:0">
+				
+			  <h1>Chahida</h1>
+			  <p>An Online Shopping Store</p> 
+
+			</div>
+		</div>
+	</div>
 	@include('inc/navbar')
 	
 </div>
