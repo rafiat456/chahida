@@ -159,7 +159,7 @@ class ProductsTableSeeder extends Seeder
 
         	'cat_id' => '2',
         	'p_name' => 'Toshiba model-2',
-        	'p_slug' =>  'tohiba-model-2',
+        	'p_slug' =>  'toshiba-model-2',
         	'p_description' => 'Buy the best one',
         	'p_code' => '70012',
         	'p_price' => '58000',

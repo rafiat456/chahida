@@ -5,7 +5,7 @@
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-	    <ul class="navbar-nav ml-auto mx-auto">
+	    <ul class="navbar-nav m-triangle-left ml-auto mx-auto">
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('home')}}"><span class="fa fa-home"></span> Home</a>
 	      </li>
@@ -30,7 +30,11 @@
 	  
 	     
 	      <li class="nav-item">
-	        <a class="nav-link" href="{{route('cart')}}"><span class= "fa fa-cart-arrow-down"> </span> Cart</a>
+	        <a class="nav-link" href="{{route('cart.index')}}"><span class= "fa fa-cart-arrow-down"> </span> Cart 
+				@if(Cart::instance('default')->count() > 0)
+	        	<span class="badge badge-warning">{{Cart::instance('default')->count()}}</span>
+	        	@endif
+	        </a>
 	      </li>    
 	    </ul>
 

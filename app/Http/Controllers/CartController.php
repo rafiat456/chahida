@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Products;
-use App\Poducts_attribute;
-class ShopController extends Controller
+use Cart;
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Products::InRandomOrder()->take(12)->get();
-        return view('shop')->with('products', $products);
+        return view('cart');
     }
 
     /**
@@ -23,9 +21,16 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fao()
+    public function create()
     {
-        
+        //
+    }
+
+    public function empty(){
+
+        Cart::destroy();
+
+        return redirect()->route('cart.index');
     }
 
     /**
@@ -34,39 +39,34 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SearchPrice(Request $request)
+    public function store(Request $request)
     {
-        $min  = $request->input('min');
-        $max  = $request->input('max');
+        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
+            return $cartItem->id === $request->p_id;
 
-        $search =Products::whereBetween('p_price', [$min, $max])->get();
-        //dd($search);
-        
-        return view('shop')->with('search', $search);
+        });
 
+        if($duplicates->isNotEmpty()){
 
+            return redirect()->route('cart.index')->with('success','Item is already in your cart');
+
+        }
+
+        Cart::add($request->p_id, $request->p_name, $request->p_qtn, $request->p_price, $request->p_item_size, $request->p_item_color)
+        ->associate('App\Products');
+
+        return redirect()->route('cart.index')->with('success', "Item was added");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function checkout()
     {
-
-        $item = Poducts_attribute::where('p_slug', $slug)->firstOrFail();
-        $product = Products::where('p_slug', $slug)->firstOrFail();
-
-        $youmaylike = Products::where('p_slug','!=', $slug)->InRandomOrder()->take(4)->get();
-
-        return view('item')->with([
-            'product' => $product,
-            'youmaylike' => $youmaylike,
-            'item' => $item,
-
-        ]);
+        return view('checkout');
     }
 
     /**
@@ -77,7 +77,7 @@ class ShopController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -95,11 +95,13 @@ class ShopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $p_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($p_id)
     {
-        //
+        Cart::remove($p_id);
+
+        return back()->with('success','Item has been deleted');
     }
 }

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Products;
-use App\Poducts_attribute;
-class ShopController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Products::InRandomOrder()->take(12)->get();
-        return view('shop')->with('products', $products);
+        //
     }
 
     /**
@@ -23,9 +21,9 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fao()
+    public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,7 +32,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SearchPrice(Request $request)
+    public function Price(Request $request)
     {
         $min  = $request->input('min');
         $max  = $request->input('max');
@@ -50,23 +48,12 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($id)
     {
-
-        $item = Poducts_attribute::where('p_slug', $slug)->firstOrFail();
-        $product = Products::where('p_slug', $slug)->firstOrFail();
-
-        $youmaylike = Products::where('p_slug','!=', $slug)->InRandomOrder()->take(4)->get();
-
-        return view('item')->with([
-            'product' => $product,
-            'youmaylike' => $youmaylike,
-            'item' => $item,
-
-        ]);
+        //
     }
 
     /**
@@ -77,7 +64,7 @@ class ShopController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**

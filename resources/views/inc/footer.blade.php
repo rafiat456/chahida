@@ -9,8 +9,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js" crossorigin="anonymous"></script>
 
-<script src="{{asset('js/categ.js')}}"></script>
+<script src="{{asset('/js/categ.js')}}"></script>
 <script src="{{asset('/css/fancybox/jquery.fancybox.js')}}"></script> 
+<script src="{{asset('/css/fancybox/jquery.fancybox.pack.js')}}"></script> 
+
 
 @yield('footer-script')
 @yield('thumbnail-gallery')

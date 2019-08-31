@@ -223,7 +223,7 @@ top: auto;
 left: auto;
 width: 25px;
 height: 25px;
-background-image: url(images/icon-close.svg);
+background-image: url(/images/icon-close.svg);
 -webkit-background-size: contain;
 background-size: contain;
 }

@@ -69,7 +69,7 @@ nav > div a.nav-item.nav-link:focus
 	  </ol>
 	</div>
 </div>
-<div class="container">
+<div class="container main">
 	
 
 <div class="card">
@@ -90,16 +90,17 @@ nav > div a.nav-item.nav-link:focus
 			  <div class="pics clearfix">
 			      <div class="thumbs">
 			          <div class="preview"> 
-			            <a href="#" class="selected" data-full="{{asset('images/3.jpg')}}" data-title="Spring 2013 | Luna + Hill"> 
+			            <a href="#" class="selected" data-full="{{asset('images/3.jpg')}}" data-title=""> 
 			              <img src="{{asset('images/3.jpg')}}"/> 
 			            </a> 
 			          </div>
-			          <div class="preview"> <a href="#" data-full="{{asset('images/1.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/1.jpg')}}"/> </a> </div>
-			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
-			          <div class="preview"> <a href="#" data-full="{{asset('images/4.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/4.jpg')}}"/> </a> </div>
-			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/1.jpg')}}" data-title=""> <img src="{{asset('images/1.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title="" Hill"> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/4.jpg')}}" data-title=""> <img src="{{asset('images/4.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title=""> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
 			      </div>
-			      <a href="{{asset('images/3.jpg')}}" class="full" title="Spring 2013 | Luna + Hill"> 
+			      <a href="{{asset('images/3.jpg')}}" class="full" title="Laptop
+			      "> 
 			      <!-- first image is viewable to start --> 
 			      <img src="{{asset('images/3.jpg')}}"> </a> 
 			  </div>
@@ -111,7 +112,7 @@ nav > div a.nav-item.nav-link:focus
 <p class="price-detail-wrap"> 
 	<span class="price h3 text-warning"> 
 		
-		<span class="currency">TK </span><span class="num">{{$product->p_price}}</span>
+		<span class="currency">TK </span><span class="num" data-num="{{$product->p_price}}">{{$product->p_price}}</span>
 	
 	</span> 
 	<!--<span>/per kg</span> -->
@@ -146,9 +147,9 @@ nav > div a.nav-item.nav-link:focus
 				 <dt >Quantity: </dt>
 				 <dd>
 				 <div class="quantity">
-                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                    <input type="text" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="1" style="width:50px;">
-                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                   <div class="form-group col-md-12">
+					  <input type="text" name="p_qtn" class="qtn form-control form-control-sm" value="1" placeholder="1">
+					</div>
                 </div>
                 </dd>
 			 <!-- <dt>Quantity: </dt>
@@ -165,10 +166,10 @@ nav > div a.nav-item.nav-link:focus
 			<dl class="param param-inline">
 			  <dt>Color: </dt>
 			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> {{$item->p_color_1}} </option>
-			  		<option> {{$item->p_color_2}} </option>
-			  		<option> {{$item->p_color_3}} </option>
+			  	<select id="color" name="p_item_color" class="form-control form-control-sm" style="width:70px;">
+			  		<option value="{{$item->p_color_1}}"> {{$item->p_color_1}} </option>
+			  		<option value="{{$item->p_color_2}}"> {{$item->p_color_2}} </option>
+			  		<option value="{{$item->p_color_3}}"> {{$item->p_color_3}} </option>
 			  	</select>
 			  </dd>
 			</dl>  <!-- item-property .// -->
@@ -177,18 +178,27 @@ nav > div a.nav-item.nav-link:focus
 			<dl class="param param-inline">
 			  <dt>Size: </dt>
 			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> {{$item->p_size_1}} </option>
-			  		<option> {{$item->p_size_2}} </option>
-			  		<option> {{$item->p_size_3}} </option>
+			  	<select id="size" name="p_item_size"class="form-control form-control-sm" style="width:70px;">
+			  		<option value="{{$item->p_size_1}}"> {{$item->p_size_1}} </option>
+			  		<option value="{{$item->p_size_2}}"> {{$item->p_size_2}} </option>
+			  		<option value="{{$item->p_size_3}}"> {{$item->p_size_3}} </option>
 			  	</select>
 			  </dd>
 			</dl>  <!-- item-property .// -->
 		</div> 
 	</div> <!-- row.// -->
 	<hr>
-	<a href="#" class="btn btn-lg btn-info text-uppercase"> Buy now </a>
-	<a href="{{route('cart')}}" class="btn btn-lg btn-info text-uppercase"> <i class="fa fa-cart-arrow-down"></i> Add to cart </a>
+	<a href="#" class="btn btn-info text-uppercase"> <i class="fa fa-heart"></i> Wishlist </a>
+	<form action="{{route('cart.store')}}" method="post" class="float-right">
+		@csrf
+		<input type="hidden" name="p_id" value="{{$product->p_id}}">
+		<input type="hidden" name="p_name" value="{{$product->p_name}}">
+		<input type="hidden" name="p_price" value="{{$product->p_price}}">
+		<input type="hidden" name="p_qtn" value="{{$product->p_qtn}}">
+		<input type="hidden" name="p_item_size" value="{{$product->p_item_size}}">
+		<input type="hidden" name="p_item_color" value="{{$product->p_item_color}}">
+			<button type="submit" class="btn  btn-info text-uppercase"> <i class="fa fa-cart-arrow-down"></i> Add to cart </button>
+	</form>
 </article> <!-- card-body.// -->
 		</aside> <!-- col.// -->
 	</div> <!-- row.// -->
@@ -353,7 +363,25 @@ nav > div a.nav-item.nav-link:focus
 
   });//end doc ready
 
-  
+  $(document).ready(function(){
+	$(".main").on("keyup", ".qtn", function(){
+		var price = +$(".num").data("num");
+		var quantity = +$(this).val();
+		$(".num").text(price * quantity);
+	})
+})
 
+
+
+
+    $(document).ready(function () {
+        $("#color").change(function () {
+
+            // var selectedVal = $("#myselect option:selected").text();
+            var selectedVal = $("#color option:selected").val();
+            alert("Hi, your favorite programming language is " + selectedVal);
+
+        });
+    });
   </script>
 @endsection
