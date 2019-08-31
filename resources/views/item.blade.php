@@ -53,6 +53,9 @@ nav > div a.nav-item.nav-link:focus
     transition:background 0.20s linear;
 }
 </style>
+<link rel="stylesheet" href="{{asset('css/stylesheet.css')}}">
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{asset('/css/fancybox/jquery.fancybox.css')}}">
 @section('content')
 
 
@@ -71,20 +74,37 @@ nav > div a.nav-item.nav-link:focus
 
 <div class="card">
 	<div class="row">
-		<aside class="col-sm-5">
-<article class="gallery-wrap"> 
-<div class="img-big-wrap">
-  <div> <a href="#"><img src="{{asset('images/3.jpg')}}"></a></div>
-</div> <!-- slider-product.// -->
-<div class="img-small-wrap">
-  <div class="item-gallery"> <img src="{{asset('images/1.jpg')}}"> </div>
-  <div class="item-gallery"> <img src="{{asset('images/2.jpg')}}"> </div>
-  <div class="item-gallery"> <img src="{{asset('images/4.jpg')}}"> </div>
-  <div class="item-gallery"> <img src="{{asset('images/5.jpg')}}"> </div>
-</div> <!-- slider-nav.// -->
-</article> <!-- gallery-wrap .end// -->
-		</aside>
 		<aside class="col-sm-7">
+			<!--<article class="gallery-wrap"> 
+			<div class="img-big-wrap">
+			  <div> <a href="#"><img src="{{asset('images/3.jpg')}}"></a></div>
+			</div> <!-- slider-product.// -->
+			<!--<div class="img-small-wrap">
+			  <div class="item-gallery"> <img src="{{asset('images/1.jpg')}}"> </div>
+			  <div class="item-gallery"> <img src="{{asset('images/2.jpg')}}"> </div>
+			  <div class="item-gallery"> <img src="{{asset('images/4.jpg')}}"> </div>
+			  <div class="item-gallery"> <img src="{{asset('images/5.jpg')}}"> </div>
+			</div> <!-- slider-nav.// -->
+			<!--</article> <!-- gallery-wrap .end// -->
+			<div class="gallery clearfix">
+			  <div class="pics clearfix">
+			      <div class="thumbs">
+			          <div class="preview"> 
+			            <a href="#" class="selected" data-full="{{asset('images/3.jpg')}}" data-title="Spring 2013 | Luna + Hill"> 
+			              <img src="{{asset('images/3.jpg')}}"/> 
+			            </a> 
+			          </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/1.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/1.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/4.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/4.jpg')}}"/> </a> </div>
+			          <div class="preview"> <a href="#" data-full="{{asset('images/2.jpg')}}" data-title="Spring 2013 | Luna + Hill"> <img src="{{asset('images/2.jpg')}}"/> </a> </div>
+			      </div>
+			      <a href="{{asset('images/3.jpg')}}" class="full" title="Spring 2013 | Luna + Hill"> 
+			      <!-- first image is viewable to start --> 
+			      <img src="{{asset('images/3.jpg')}}"> </a> 
+			  </div>
+		</aside>
+		<aside class="col-sm-5">
 <article class="card-body p-5 full-height">
 	<h3 class="title mb-3">{{$product->p_name}}</h3>
 
@@ -98,9 +118,7 @@ nav > div a.nav-item.nav-link:focus
 </p> <!-- price-detail-wrap .// -->
 <dl class="item-property">
   <dt>About</dt>
-  <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco </p></dd>
+  <dd><p>{{$product->p_description}} </p></dd>
 </dl>
 <dl class="param param-feature">
   <dt>Model</dt>
@@ -292,6 +310,50 @@ quis nostrud exercitation ullamco </p></dd>
               </div>
         </div>
       </div>
-</div>
+     </div>
+     
+		
+
 <!--container.//-->
+ @include('inc/youmaylike')
+
+@endsection
+
+@section('thumbnail-gallery')
+	<script>
+  $(document).ready(function(){
+
+      $(".preview a").on("click", function(){
+          $(".selected").removeClass("selected");
+          $(this).addClass("selected");
+          var picture = $(this).data();
+          
+          event.preventDefault(); //prevents page from reloading every time you click a thumbnail
+
+
+          $(".full img").fadeOut( 100, function() { 
+            $(".full img").attr("src", picture.full);
+            $(".full").attr("href", picture.full);
+            $(".full").attr("title", picture.title);
+
+        }).fadeIn();
+
+
+      });// end on click
+
+      $(".full").fancybox({
+          helpers : {
+              title: {
+                  type: 'inside'
+              }
+          },
+          closeBtn : true,
+      });
+
+
+  });//end doc ready
+
+  
+
+  </script>
 @endsection
