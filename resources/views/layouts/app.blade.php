@@ -6,6 +6,7 @@
 <body>
 
 <div class="container-fluid">
+
 	<div class="header-back">
 		<div class="triangle-left float-left">
 			<div class="jumbotron text-white text-center" style="margin-bottom:0">
@@ -21,6 +22,7 @@
 				
 			  <h1>Chahida</h1>
 			  <p>An Online Shopping Store</p> 
+
 
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 
 <h1>Chahida</h1>
-<i>An Online Shopping Store</i>
+<i><span style="color:red;">An Online Shopping Store</span></i>
 
 
-<img src="demo.png">
+
 

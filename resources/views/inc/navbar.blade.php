@@ -14,14 +14,21 @@
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('contact')}}"><span class="fa fa-phone"></span> Contact</a>
-	      </li>    
-	  
-	      <li class="nav-item">
+	      </li> 
+	      @if(Auth::check())
+				 <li class="nav-item">
+	        <a class="nav-link" href="{{route('register')}}"><span class= "fa fa-user"></span> My Account</a>
+	      </li>
+	      @else
+	       <li class="nav-item">
 	        <a class="nav-link" href="{{route('register')}}"><span class= "fa fa-user"></span> Register</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('login')}}"><span class= "fa fa-unlock-alt"> </span> Login</a>
 	      </li>
+	      @endif
+	  
+	     
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('cart.index')}}"><span class= "fa fa-cart-arrow-down"> </span> Cart 
 				@if(Cart::instance('default')->count() > 0)

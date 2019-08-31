@@ -14,18 +14,20 @@
 		              <h4 class="modal-title" id="myModalLabel">Get access & have amazing products</h4>
 		          </div>
 		          <div class="modal-body">
+		          	@include('message')
 		              <div class="row">
 		                  <div class="col-xs-12">
 		                      <div class="well">
-		                          <form id="loginForm" method="POST" action="" novalidate="novalidate">
+		                          <form id="loginForm" method="POST" action="{{route('login_action')}}" novalidate="novalidate">
+		                          		<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 		                              <div class="form-group">
-		                                  <label for="username" class="control-label">Username</label>
-		                                  <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="">
+		                                  <label for="username" class="control-label required-star">Email</label>
+		                                  <input type="text" class="form-control required" id="email" name="email" value=""  title="Please enter you username" placeholder="">
 		                                 
 		                              </div>
 		                              <div class="form-group">
-		                                  <label for="password" class="control-label">Password</label>
-		                                  <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
+		                                  <label for="password" class="control-label required-star">Password</label>
+		                                  <input type="password" class="form-control required" id="password" name="password" value=""  title="Please enter your password">
 		                                  
 		                              </div>
 		                              <!--
@@ -63,4 +65,12 @@
 
 
 
+@endsection
+
+@section('footer-script')
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("form#loginForm").validate();
+	});
+</script>
 @endsection

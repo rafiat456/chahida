@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
 
 <div class="container">
 	<div class="row">
@@ -19,14 +19,16 @@
 		                  	<span>Note:(*) Must be Fillup</span>
 		                  </div>
 		              </div>
+		              
+
 		              <div class="row">
 		                  <div class="col-xs-12 col-lg-12 col-md-12">
 		                      <div class="well">
 		                          <form id="registerForm" method="POST" action="{{route('resister_store')}}" novalidate="novalidate">
 		                          	<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 		                              <div class="form-group">
-		                                  <label for="username" class="control-label required-star">Username</label>
-		                                  <input type="text" class="form-control required" id="username" name="username" value="" required placeholder="">
+		                                  <label for="u_name" class="control-label required-star">Name</label>
+		                                  <input type="text" class="form-control required" id="username" name="u_name" value="" required placeholder="">
 		                                  
 		                              </div>
 		                              <div class="form-group">
@@ -54,11 +56,7 @@
 		                                  <input type="text" class="form-control required" id="city" name="u_address" value="" required="">
 		                                  
 		                              </div>
-		                              <div class="form-group">
-		                                  <label for="u_postalcode" class="control-label">Postalcode</label>
-		                                  <input type="text" class="form-control" id="city" name="u_postalcode" value="" required="">
-		                                  
-		                              </div>
+		                             
 		                              <div class="form-group">
 		                                  <label for="u_mobile" class="control-label required-star">Phone</label>
 		                                  <input type="text" class="form-control required" id="city" name="u_mobile" value="" required="">
@@ -84,9 +82,15 @@
 @endsection
 
 @section('footer-script')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$("form#registerForm").validate();
 	});
+
+$(".js-example-tags").select2({
+  tags: true
+});
 </script>
 @endsection
