@@ -15,13 +15,6 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $userMsgs = Category::with( [
-                    'child' => function ( $query ) {
-                        $query->where( 'cat_status', 1 );
-                        $query->where( 'parent_id','!=', 0 );
-                    }
-                ] )->where( 'cat_status', 1 )->get();
-        dd($userMsgs);
         $products = Products::InRandomOrder()->take(12)->get();
         return view('shop')->with('products', $products);
     }

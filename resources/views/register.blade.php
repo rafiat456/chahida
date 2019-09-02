@@ -86,7 +86,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$("form#registerForm").validate();
+		$("form#registerForm").validate({
+			 u_email: {
+      required: true,
+      email: true,
+      remote: {
+        url: "check-email.php",
+        type: "post",
+        data: {
+          username: function() {
+            return $( "#username" ).val();
+          }
+        }
+      }
+    }
+		});
 	});
 
 $(".js-example-tags").select2({

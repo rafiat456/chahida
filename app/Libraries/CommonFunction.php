@@ -2,14 +2,25 @@
 
 namespace App\Libraries;
 use App\EmailQueue;
+use App\Category;
+
 
 class CommonFunction
 {
 
+    public static function getParentCategory(){
+        $parentcategory = Category::where('parent_id', '=', 0)
+        ->where('cat_status',1)->get();
+        return $parentcategory;
+    }
+
+    public static function  getAllCategory(){
+         $allCategories = Category::where('cat_status',1)->pluck('cat_name','id')->all();
+         return $allCategories;
+    }
+
 	public static function sendMessageFromSystem($param = array())
     {
-       
-       
         $emailYes = (empty($param[0]['emailYes']) ? '1' : $param[0]['emailYes']);
         $emailBody = (empty($param[0]['emailBody']) ? 'No Email Body' : $param[0]['emailBody']);
         $emailHeader = (empty($param[0]['emailHeader']) ? '0' : $param[0]['emailHeader']);
