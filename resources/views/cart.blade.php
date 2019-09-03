@@ -34,9 +34,9 @@
                 @endif
 
 
-                @if(Cart::count() > 0)
+                @if(Cart::content()->count() > 0)
 
-                    <h3>{{Cart::count()}} item(s) were added</h3>
+                    <h3>{{Cart::content()->count()}} item(s) were added</h3>
                     <br>
                 <div class="row">
                     <div class="col-12">
@@ -61,17 +61,19 @@
                                             <a href="{{route('shop.show', $item->model->p_slug)}}"><img src="{{asset('images/3.jpg')}}" alt="Product"></a>
                                             <h6>{{$item->model->p_name}}</h6>
                                         </td>
-                                        <td class="price"><span>Red</span></td>
-                                        <td class="price"><span>Small</span></td>
-                                        <td class="price"><span>{{$item->model->p_price}}</span></td>
+                                        <td class="price"><span>{{$item->options->color}}</span></td>
+                                        <td class="price"><span>{{$item->options->size}}</span></td>
+                                        <td class="price"><span>{{$item->price}}</span></td>
                                         <td class="qty">
-                                            <div class="quantity">
+                                           <input type="number" calss="quantity" value="{{$item->qty}}">
+                                           
+                                            <!--<div class="quantity">
                                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                <input type="text" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="1">
+                                                <input type="text" class="qty-text" id="qty" step="1" min="1" max="99" name="quantity" value="{{$item->qty}}">
                                                 <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                            </div>
+                                            </div>-->
                                         </td>
-                                        <td class="total_price"><span>50TK</span></td>
+                                        <td class="total_price"><span>{{$item->subtotal()}}</span></td>
                                         <td>
                                             <form action="{{route('cart.destroy', $item->rowId)}}" method="post">
                                             @csrf
@@ -143,12 +145,13 @@
                                 <h5>Cart total</h5>
                                 <p>Final info</p>
                             </div>
-
+                            @foreach(Cart::content() as $item)
                             <ul class="cart-total-chart">
-                                <li><span>Subtotal</span> <span>50TK</span></li>
+                                <li><span>Subtotal</span> <span>{{$item->subtotal()}}</span></li>
                                 <li><span>Delivery Charge</span> <span>Free</span></li>
                                 <li><span><strong>Total</strong></span> <span><strong>50TK</strong></span></li>
                             </ul>
+                            @endforeach
                             <a style="width:100%;" href="{{route('checkout')}}" class="btn btn-dark btn-lg">Proceed to checkout</a>
                         </div>
                     </div>

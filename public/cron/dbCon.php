@@ -12,6 +12,7 @@ $DB_USERNAME=getenv('DB_USERNAME');
 $DB_PASSWORD=getenv('DB_PASSWORD');
 $mysqli = new mysqli($DB_HOST, $DB_USERNAME, $DB_PASSWORD, $DB_DATABASE);
 
+
 /* check connection */
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());

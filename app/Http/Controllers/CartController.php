@@ -13,6 +13,7 @@ class CartController extends Controller
      */
     public function index()
     {
+
         return view('cart');
     }
 
@@ -41,6 +42,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+
+        
+             
         $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->p_id;
 
@@ -51,9 +55,18 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('success','Item is already in your cart');
 
         }
+             Cart::add([
+            'id' => $request->p_id, 
+            'name' => $request->p_name, 
+            'qty' => $request->p_qtn, 
+            'price' => $request->p_price, 
+            'weight' => 1, 
+            'options' => ['size' => $request->p_size, 
+                          'color'=>$request->p_color]
+                        ])->associate('App\Products');
 
-        Cart::add($request->p_id, $request->p_name, $request->p_qtn, $request->p_price, $request->p_item_size, $request->p_item_color)
-        ->associate('App\Products');
+             //dd(Cart::content());
+
 
         return redirect()->route('cart.index')->with('success', "Item was added");
     }
