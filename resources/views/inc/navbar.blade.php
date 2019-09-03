@@ -31,8 +31,8 @@
 	     
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('cart.index')}}"><span class= "fa fa-cart-arrow-down"> </span> Cart 
-				@if(Cart::instance('default')->count() > 0)
-	        	<span class="badge badge-warning">{{Cart::instance('default')->count()}}</span>
+				@if(Cart::content()->count() > 0)
+	        	<span class="badge badge-warning">{{Cart::content()->count()}}</span>
 	        	@endif
 	        </a>
 	      </li>    

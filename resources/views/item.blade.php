@@ -29,7 +29,7 @@ nav > div a.nav-item.nav-link.active:after
  {
   content: "";
   position: relative;
-  bottom: -60px;
+  bottom: -50px;
   left: -10%;
   border: 15px solid transparent;
   border-top-color: black ;
@@ -144,29 +144,29 @@ nav > div a.nav-item.nav-link:focus
 	<div class="row">
 		<div class="col-sm-4">
 			<dl class=" text-center param param-inline">
-				 <dt >Quantity: </dt>
+				 <!--<dt >Quantity: </dt>
 				 <dd>
 				 <div class="quantity">
                    <div class="form-group col-md-12">
 					  <input type="text" name="p_qtn" class="qtn form-control form-control-sm" value="1" placeholder="1">
 					</div>
                 </div>
-                </dd>
-			 <!-- <dt>Quantity: </dt>
+                </dd>-->
+			 <dt>Quantity: </dt>
 			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-			  		<option> 3 </option>
+			  	<select id="qtn" name="p_qtn" class="qtn form-control form-control-sm" style="width:70px;">
+			  		<option value = "1"> 1 </option>
+			  		<option value = "2"> 2 </option>
+			  		<option value = "3"> 3 </option>
 			  	</select>
-			  </dd>-->
+			  </dd>
 			</dl>  <!-- item-property .// -->
 		</div> <!-- col.// -->
 		<div class="col-sm-4">
 			<dl class="param param-inline">
 			  <dt>Color: </dt>
 			  <dd>
-			  	<select id="color" name="p_item_color" class="form-control form-control-sm" style="width:70px;">
+			  	<select id="p_color" name="p_item_color" class="form-control form-control-sm" style="width:70px;">
 			  		<option value="{{$item->p_color_1}}"> {{$item->p_color_1}} </option>
 			  		<option value="{{$item->p_color_2}}"> {{$item->p_color_2}} </option>
 			  		<option value="{{$item->p_color_3}}"> {{$item->p_color_3}} </option>
@@ -178,7 +178,7 @@ nav > div a.nav-item.nav-link:focus
 			<dl class="param param-inline">
 			  <dt>Size: </dt>
 			  <dd>
-			  	<select id="size" name="p_item_size"class="form-control form-control-sm" style="width:70px;">
+			  	<select id="p_size" name="p_item_size"class="form-control form-control-sm psize" style="width:70px;">
 			  		<option value="{{$item->p_size_1}}"> {{$item->p_size_1}} </option>
 			  		<option value="{{$item->p_size_2}}"> {{$item->p_size_2}} </option>
 			  		<option value="{{$item->p_size_3}}"> {{$item->p_size_3}} </option>
@@ -193,10 +193,10 @@ nav > div a.nav-item.nav-link:focus
 		@csrf
 		<input type="hidden" name="p_id" value="{{$product->p_id}}">
 		<input type="hidden" name="p_name" value="{{$product->p_name}}">
-		<input type="hidden" name="p_price" value="{{$product->p_price}}">
-		<input type="hidden" name="p_qtn" value="{{$product->p_qtn}}">
-		<input type="hidden" name="p_item_size" value="{{$product->p_item_size}}">
-		<input type="hidden" name="p_item_color" value="{{$product->p_item_color}}">
+		<input type="hidden" id="price" name="p_price" value="{{$product->p_price}}">
+		<input type="hidden" id="pqtn" name="p_qtn" value="1">
+		<input type="hidden" id="size" name="p_size" value="small">
+		<input type="hidden" id="color" name="p_color" value="black">
 			<button type="submit" class="btn  btn-info text-uppercase"> <i class="fa fa-cart-arrow-down"></i> Add to cart </button>
 	</form>
 </article> <!-- card-body.// -->
@@ -364,24 +364,39 @@ nav > div a.nav-item.nav-link:focus
   });//end doc ready
 
   $(document).ready(function(){
-	$(".main").on("keyup", ".qtn", function(){
+	$(".main").on("change", ".qtn", function(e){
 		var price = +$(".num").data("num");
 		var quantity = +$(this).val();
+		
+		//var p_size = $("#p_size option:selected").val();
+		//$("#size").val(p_size);
+
 		$(".num").text(price * quantity);
+
+		$("#pqtn").val(quantity);
+		$("#price").val(price * quantity);
+		
+
 	})
-})
+});
+
+   $(document).ready(function(){
+	$(".main").on("change", function(e){
+		var p_color = $("#p_color option:selected").val(); 
+		var p_size = $("#p_size option:selected").val();
+		$("#size").val(p_size);
+		$("#color").val(p_color);
+
+	})
+});
 
 
 
 
-    $(document).ready(function () {
-        $("#color").change(function () {
 
-            // var selectedVal = $("#myselect option:selected").text();
-            var selectedVal = $("#color option:selected").val();
-            alert("Hi, your favorite programming language is " + selectedVal);
 
-        });
-    });
+
+
+
   </script>
 @endsection

@@ -27,6 +27,12 @@ a:hover {
 .nav-link{
     padding: .75rem 1rem;   
 }
+
+
+input[type="number"]{
+  outline:none;
+  border:none;
+}
 .navbar-dark .navbar-nav .nav-link {
     color: #343a40;
     text-transform: uppercase;
