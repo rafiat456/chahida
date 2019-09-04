@@ -46,7 +46,10 @@ class UsersController extends Controller
          
            if($this->signupMail($request,$encrypted_token))
             {
-                return redirect('register?tmp=' . Encryption::encodeId($request->get('u_email')));
+                Session::flash('success', 'You have successfully register');
+                Session::flash('note', 'A verification email has been sent to your email please the verification link.');
+
+                return redirect('success?tmp=' . Encryption::encodeId($request->get('u_email')));
             }
             else
             {

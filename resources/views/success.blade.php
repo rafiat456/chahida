@@ -1363,8 +1363,8 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swa
        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
     </div>
-    <h1 class="text-success">You have successfully ordered</h1>
-    <p>Hello (user), Soon we will call you at this number (+880 1677316794)</p>
+    <h1 class="text-success">{{Session::get("success")}} </h1>
+    <p>{{Session::get("note")}}</p>
 
 </div>
 @endsection
