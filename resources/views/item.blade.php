@@ -148,7 +148,7 @@ nav > div a.nav-item.nav-link:focus
 				 <dd>
 				 <div class="quantity">
                    <div class="form-group col-md-12">
-					  <input type="text" name="p_qtn" class="qtn form-control form-control-sm" value="1" placeholder="1">
+					  <input type="number" id="qtn" name="p_qtn" class="qtn form-control form-control-sm" value="1" placeholder="1">
 					</div>
                 </div>
                 </dd>-->
@@ -188,7 +188,17 @@ nav > div a.nav-item.nav-link:focus
 		</div> 
 	</div> <!-- row.// -->
 	<hr>
-	<a href="#" class="btn btn-info text-uppercase"> <i class="fa fa-heart"></i> Wishlist </a>
+	<form action="{{route('wishlist.store')}}" method="post" class="float-left">
+		@csrf
+		<input type="hidden" name="p_id" value="{{$product->p_id}}">
+		<input type="hidden" name="p_name" value="{{$product->p_name}}">
+		<input type="hidden" id="price" name="p_price" value="{{$product->p_price}}">
+		<input type="hidden" id="pqtn" name="p_qtn" value="1">
+		<input type="hidden" id="size" name="p_size" value="small">
+		<input type="hidden" id="color" name="p_color" value="black">
+		<button type="submit" class="btn btn-info text-uppercase"> <i class="fa fa-heart"></i> Wishlist </button>
+	</form>
+	
 	<form action="{{route('cart.store')}}" method="post" class="float-right">
 		@csrf
 		<input type="hidden" name="p_id" value="{{$product->p_id}}">

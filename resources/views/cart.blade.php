@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div class="cart_area clearfix">
+<div class="cart_area clearfix ">
             <div class="container">
 
                 @if(session()->has('success'))
@@ -39,7 +39,7 @@
                     <h3>{{Cart::content()->count()}} item(s) were added</h3>
                     <br>
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 main">
                         
                         <div class="cart-table clearfix">
                             <table class="table table-responsive">
@@ -63,9 +63,9 @@
                                         </td>
                                         <td class="price"><span>{{$item->options->color}}</span></td>
                                         <td class="price"><span>{{$item->options->size}}</span></td>
-                                        <td class="price"><span>{{$item->price}}</span></td>
+                                        <td class="price"><span class="num" data-num="{{$item->price}}">{{$item->price}}</span></td>
                                         <td class="qty">
-                                           <input type="number" calss="quantity" value="{{$item->qty}}">
+                                           <input type="number" id="qtn" calss="quantity qtn" value="{{$item->qty}}">
                                            
                                             <!--<div class="quantity">
                                                 <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
@@ -94,8 +94,12 @@
                                 <a href="{{route('shop')}}">Continue shooping</a>
                             </div>
                             <div class="update-checkout w-50 text-right">
-                                <a href="{{route('cart.empty')}}">clear cart</a>
+                                <a href="{{route('cart.empty')}}" class="float-left">clear cart</a>
+                                <form action="" method="" class="float-right">
+                                <input type="hidden" id="price" name="price" value="">
+                                <input type="hidden" id="qtn" name="qtn" value="">
                                 <a href="#">Update cart</a>
+                                </form>
                             </div>
                         </div>
 
@@ -145,13 +149,16 @@
                                 <h5>Cart total</h5>
                                 <p>Final info</p>
                             </div>
-                            @foreach(Cart::content() as $item)
+                            
                             <ul class="cart-total-chart">
-                                <li><span>Subtotal</span> <span>{{$item->subtotal()}}</span></li>
+                                <li><span>Subtotal</span> <span>
+                                @foreach(Cart::content() as $item)
+                                {{$item->subtotal()}}</span></li>
                                 <li><span>Delivery Charge</span> <span>Free</span></li>
                                 <li><span><strong>Total</strong></span> <span><strong>50TK</strong></span></li>
+                                @endforeach
                             </ul>
-                            @endforeach
+                            
                             <a style="width:100%;" href="{{route('checkout')}}" class="btn btn-dark btn-lg">Proceed to checkout</a>
                         </div>
                     </div>
@@ -160,3 +167,23 @@
         </div>
 @endsection
 
+@section('thumbnail-gallery')
+<script>
+      $(document).ready(function(){
+    $(".main").on("change", ".qtn", function(e){
+        var price = +$(".num").data("num");
+        var quantity = +$(this).val();
+        
+        //var p_size = $("#p_size option:selected").val();
+        //$("#size").val(p_size);
+
+        $(".num").text(price * quantity);
+
+        //$("#pqtn").val(quantity);
+        //$("#price").val(price * quantity);
+        
+
+    })
+});
+</script>
+@endsection

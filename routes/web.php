@@ -67,3 +67,8 @@ Route::get('/order', function () {
 Route::get('/success', function () {
     return view('success');
 })->name('success');
+
+Route::get('/wishlist','WishListController@index')->name('wishlist.index');
+Route::post('/wishlist/store','WishListController@store')->name('wishlist.store');
+Route::get('/wishlist/empty','WishListController@empty')->name('wishlist.empty');
+Route::delete('/wishlist/{id}','WishListController@destroy')->name('wishlist.destroy');

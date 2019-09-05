@@ -31,11 +31,18 @@
 	     
 	      <li class="nav-item">
 	        <a class="nav-link" href="{{route('cart.index')}}"><span class= "fa fa-cart-arrow-down"> </span> Cart 
-				@if(Cart::content()->count() > 0)
+				@if(Cart::instance('default')->content()->count() > 0)
+	        	<span class="badge badge-warning">{{Cart::instance('default')->content()->count()}}</span>
+	        	@endif
+	        </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="{{route('wishlist.index')}}"><span class= "fa fa-heart"> </span> Wishlist
+				@if(Cart::instance('wishlist')->content()->count() > 0)
 	        	<span class="badge badge-warning">{{Cart::content()->count()}}</span>
 	        	@endif
 	        </a>
-	      </li>    
+	      </li>     
 	    </ul>
 
 	  </div>  

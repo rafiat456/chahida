@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Cart;
-use App\Products;
-class CartController extends Controller
+use Illuminate\Http\Request;
+
+class WishListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-
-        return view('cart');
+        return view('wishlist');
     }
 
     /**
@@ -23,16 +22,11 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function empty()
     {
-        //
-    }
+         Cart::instance('wishlist')->destroy();
 
-    public function empty(){
-
-        Cart::destroy();
-
-        return redirect()->route('cart.index');
+        return redirect()->route('wishlist.index');
     }
 
     /**
@@ -43,20 +37,18 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-
-        
-             
-        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
+                
+        $duplicates = Cart::instance('wishlist')->search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->p_id;
 
         });
 
         if($duplicates->isNotEmpty()){
 
-            return redirect()->route('cart.index')->with('success','Item is already in your cart');
+            return redirect()->route('wishlist.index')->with('success','Item is already in your wishlist');
 
         }
-             Cart::add([
+             Cart::instance('wishlist')->add([
             'id' => $request->p_id, 
             'name' => $request->p_name, 
             'qty' => $request->p_qtn, 
@@ -69,7 +61,7 @@ class CartController extends Controller
              //dd(Cart::content());
 
 
-        return redirect()->route('cart.index')->with('success', "Item was added");
+        return redirect()->route('wishlist.index')->with('success', "Item was added");
     }
 
     /**
@@ -78,9 +70,9 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function checkout()
+    public function show($id)
     {
-        return view('checkout');
+        //
     }
 
     /**
@@ -105,7 +97,6 @@ class CartController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -114,7 +105,7 @@ class CartController extends Controller
      */
     public function destroy($p_id)
     {
-        Cart::remove($p_id);
+        Cart::instance('wishlist')->remove($p_id);
 
         return back()->with('success','Item has been deleted');
     }
