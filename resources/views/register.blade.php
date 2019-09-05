@@ -31,12 +31,12 @@
 		                          	<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 		                              <div class="form-group">
 		                                  <label for="u_name" class="control-label required-star">Name</label>
-		                                  <input type="text" class="form-control required" id="username" name="u_name" value="" required placeholder="">
+		                                  <input type="text" class="form-control required" id="u_name" name="u_name" value="{{old('u_name')}}" required placeholder="">
 		                                  
 		                              </div>
 		                              <div class="form-group">
 		                                  <label for="u_email" class="control-label required-star">Email</label>
-		                                  <input type="email" class="form-control required" id="u_email" name="u_email" value="" required=""  placeholder="">
+		                                  <input type="email" class="form-control required" id="u_email" name="u_email" value="{{old('u_email')}}" required=""  placeholder="">
 		                                  
 		                              </div>
 		                             <!--  <div class="form-group">
@@ -51,18 +51,18 @@
 		                             </div> -->
 		                               <div class="form-group">
 		                                  <label for="u_city" class="control-label required-star">City</label>
-		                                  <input type="text" class="form-control required" id="u_city" name="u_city" value="" required="">
+		                                  <input type="text" class="form-control required" id="u_city" name="u_city" value="{{old('u_city')}}" required="">
 		                                  
 		                              </div>
 		                              <div class="form-group">
 		                                  <label for="u_address" class="control-label required-star"> Address</label>
-		                                  <input type="text" class="form-control required" id="city" name="u_address" value="" required="">
+		                                  <input type="text" class="form-control required" id="u_address" name="u_address" value="{{old('u_address')}}" required="">
 		                                  
 		                              </div>
 		                             
 		                              <div class="form-group">
 		                                  <label for="u_mobile" class="control-label required-star">Phone</label>
-		                                  <input type="text" class="form-control required" id="city" name="u_mobile" value="" required="">
+		                                  <input type="text" class="form-control required" id="u_mobile" name="u_mobile" value="{{old('u_mobile')}}" required="">
 		                                  
 		                              </div>
 		                              <!--

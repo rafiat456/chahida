@@ -11,9 +11,11 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $catstring = $request->route()->parameters();
+        dd(explode('/', $catstring['category']));
+        
     }
 
     /**

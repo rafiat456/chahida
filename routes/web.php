@@ -14,8 +14,9 @@
 Route::get('/', 'IndexController@index')->name('home');
 
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::get('/shop/{slug}','ShopController@show')->name('shop.show');
-Route::post('/shop/price-searching','SearchController@Price')->name('searchprice');
+/*Route::get('/shop/{slug}','ShopController@show')->name('shop.show');*/
+Route::get('/shop/{category?}', 'SearchController@index')->where('category', '.*')->name('searchprice');
+/*Route::post('/shop/price-searching','SearchController@Price')->name('searchprice');*/
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
@@ -65,5 +66,10 @@ Route::get('/order', function () {
 })->name('order');
 
 Route::get('/success', function () {
-    return view('success');
+	if (Session::get('success') != "") {
+		return view('success');
+	}else{
+		return redirect('/');
+	}
+    
 })->name('success');
