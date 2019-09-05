@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             'u_address' => 'khilgaon,Dhaka',
             'u_mobile' => '01675706439',
             'user_verification' => 'yes',
-            'password' => 'MTU2NzU5NzY2NF9hZTQzYzYxMzcwZWQ5NjBlNjY0Y2Y3YTFjMzIzYzY3MTg1NjhkMTE2MjFhNWUxNjQ0ZTNmZGQxMTNlYzUwYzgz'
+            'password' => '$2y$10$.XB30GO4jn7bx7EauLrWkugIaCNGxiQCgrFTeFDeSSrGdQYd6Rneq'
         ]);
     }
 }
